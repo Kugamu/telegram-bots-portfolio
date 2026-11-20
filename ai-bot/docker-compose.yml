@@ -1,0 +1,19 @@
+services:
+  bot:
+    build: .
+    container_name: ai-bot
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ai_data:/app/data
+      # базу знань можна редагувати на сервері без перезбірки образу,
+      # а потім натиснути «🔄 Оновити базу знань» в адмінці
+      - ./knowledge:/app/knowledge:ro
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  ai_data:

@@ -1,0 +1,16 @@
+services:
+  bot:
+    build: .
+    container_name: shop-bot
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - shop_data:/app/data   # SQLite-база зберігається між перезапусками/оновленнями
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  shop_data:

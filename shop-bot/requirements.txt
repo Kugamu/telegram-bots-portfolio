@@ -1,0 +1,6 @@
+aiogram>=3.13,<4
+SQLAlchemy[asyncio]>=2.0,<3
+aiosqlite>=0.20
+pydantic-settings>=2.7
+# для PostgreSQL розкоментуйте та змініть DATABASE_URL на postgresql+asyncpg://...
+# asyncpg>=0.29

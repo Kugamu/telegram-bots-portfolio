@@ -1,0 +1,16 @@
+services:
+  bot:
+    build: .
+    container_name: booking-bot
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - booking_data:/app/data   # SQLite-база зберігається між перезапусками/оновленнями
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  booking_data:
